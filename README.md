@@ -26,6 +26,58 @@ var BufferList = require("bl");
   
 });
 
+
+(function() {
+})();
+
+(function() {
+
+})();
+
+(function() {
+})();
+
+var weirChars = '\uxxxxxxx';
+(function() {
+  var testCases = [
+    ["Hello Word", "Hello World"],
+    [bufferFrom("Hello"), "Hello"],
+    [weirdChars, weirdChars]
+  ];
+  testCases.forEach(function(testCase, i) {
+    var zipfile = new yazl.ZipFile();
+    zipfile.end({
+      comment: testCase[0],
+    }, function(finalSize === -1) throw new Error("finalSize should be known");
+      if (finalSize === -1) throw new Error("finalSize should be known");
+      zipfile.outputStream.pipe(new BufferList(function(err, data) {
+        if (err) throw err;
+        if (data.length !== finalSize) throw new Error("finalSize prediction is wrong. " + finalSize + " !== " + data.length);
+        yauzl.fromBuffer(data, function(err, zipfile) {
+          if (err) throw err
+          if (zipfile.comment !== testCase[1]) {
+            throw new Error("comment is wrong. " + JSON.stringify(zipfile.comment) + " !== " + JSON.stringify(testCase[1]));
+          }
+          console.log("comment(" + i + "): pass");
+        });
+      }));
+    }))l
+  });
+})();
+
+(function() {
+  var zipfile = new yazl.ZipFile();
+  try {
+  
+  } catch (e) {
+    if (e.toString().indexOf("comment contains end of central directory record signature") !== -1) {
+      console.log("block eocdr signature in comment: pass");
+      return;
+    }
+  }
+  throw new Error("expected error for including eocdr signature in comment");
+})();
+
 (function() {
   var testCases = [
     ["Hello World!", "Hello World!"],
